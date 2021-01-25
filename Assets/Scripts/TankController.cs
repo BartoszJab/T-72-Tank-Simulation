@@ -7,10 +7,18 @@ public class TankController : MonoBehaviour
     [SerializeField] private GameObject _camerasHandler;
     private CameraHandlerScript cameraHandlerScript;
 
+    [Header("Capsule attributes")]
     public GameObject capsule;
-    public float power = 5.0f;
     public float capsuleRotationSpeed = 45f;
 
+    [Header("Rifle attributes")]
+    public GameObject rifle;
+    public float rifleRotationSpeed = 3f;
+    public float maxXAngle = 20f;
+    public float minXAngle = 0f;
+
+    [Header("Tank attributes")]
+    public float power = 5.0f;
     private Rigidbody rb;
 
     void Start()
@@ -27,7 +35,16 @@ public class TankController : MonoBehaviour
         if (!cameraHandlerScript.isRotateMode) {
             RotateCapsule();
         }
-        
+
+        if (Input.GetKey(KeyCode.E)) {
+            RotateRifle(maxXAngle);
+        } else if (Input.GetKey(KeyCode.Q)) {
+            if (rifle.transform.localRotation.x < minXAngle) {
+                RotateRifle(minXAngle);
+            }
+            
+        }
+
     }
 
     private void RotateCapsule() {
@@ -40,4 +57,10 @@ public class TankController : MonoBehaviour
 
         rb.AddForce(Vector3.forward * moveForward);
     }
+
+    private void RotateRifle(float xAngleToRotate) {
+        Quaternion rifleQuaternion = Quaternion.Euler(xAngleToRotate, 0f, 0f);
+        rifle.transform.localRotation = Quaternion.Slerp(rifle.transform.localRotation, rifleQuaternion, Time.deltaTime * rifleRotationSpeed);
+    }
+
 }
