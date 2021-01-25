@@ -231,17 +231,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 3802a7675a01c0d46a827c276001855b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.047446854
+      value: -0.02
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3802a7675a01c0d46a827c276001855b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.23999977
+      value: -0.328
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3802a7675a01c0d46a827c276001855b,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.7817379
+      value: 2.48
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3802a7675a01c0d46a827c276001855b,
         type: 3}
@@ -456,6 +456,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &795979656 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 3802a7675a01c0d46a827c276001855b,
+    type: 3}
+  m_PrefabInstance: {fileID: 195611715}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &921411927 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: f9bd3ae2fe7df074ca0c61db5da3b5df,
@@ -870,5 +876,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _camerasHandler: {fileID: 1868130704}
   capsule: {fileID: 1041537637}
-  power: 300000
   capsuleRotationSpeed: 45
+  rifle: {fileID: 795979656}
+  rifleRotationSpeed: 3
+  maxXAngle: 20
+  minXAngle: 0
+  power: 300000
