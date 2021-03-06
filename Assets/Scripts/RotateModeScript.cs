@@ -12,5 +12,6 @@ public class RotateModeScript : MonoBehaviour
     void Update()
     {
         transform.RotateAround(tankTransform.position, Vector3.up, Input.GetAxis("Mouse X") * rotateSpeed * Time.deltaTime);
+        //transform.RotateAround(tankTransform.position, Vector3.up, Input.GetAxis("Vertical") * rotateSpeed * Time.deltaTime);
     }
 }
