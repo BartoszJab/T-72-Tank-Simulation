@@ -478,5 +478,65 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8431644381955612171, guid: 97027b8b017178f42b6088460c5ec8b7,
+        type: 3}
+      propertyPath: m_Radius
+      value: 1.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 8431644382279181195, guid: 97027b8b017178f42b6088460c5ec8b7,
+        type: 3}
+      propertyPath: m_Radius
+      value: 1.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 8431644382618334826, guid: 97027b8b017178f42b6088460c5ec8b7,
+        type: 3}
+      propertyPath: m_Radius
+      value: 1.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 8431644382755606181, guid: 97027b8b017178f42b6088460c5ec8b7,
+        type: 3}
+      propertyPath: m_Radius
+      value: 1.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 8431644382787962037, guid: 97027b8b017178f42b6088460c5ec8b7,
+        type: 3}
+      propertyPath: m_Radius
+      value: 1.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 8431644383004272460, guid: 97027b8b017178f42b6088460c5ec8b7,
+        type: 3}
+      propertyPath: m_Radius
+      value: 1.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 8431644383082977865, guid: 97027b8b017178f42b6088460c5ec8b7,
+        type: 3}
+      propertyPath: m_Radius
+      value: 1.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 8431644383103679465, guid: 97027b8b017178f42b6088460c5ec8b7,
+        type: 3}
+      propertyPath: m_Radius
+      value: 1.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 8431644383470607948, guid: 97027b8b017178f42b6088460c5ec8b7,
+        type: 3}
+      propertyPath: m_Radius
+      value: 1.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 8431644383738907422, guid: 97027b8b017178f42b6088460c5ec8b7,
+        type: 3}
+      propertyPath: m_Radius
+      value: 1.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 8431644383943822078, guid: 97027b8b017178f42b6088460c5ec8b7,
+        type: 3}
+      propertyPath: m_Radius
+      value: 1.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 8431644383965865793, guid: 97027b8b017178f42b6088460c5ec8b7,
+        type: 3}
+      propertyPath: m_Radius
+      value: 1.05
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 97027b8b017178f42b6088460c5ec8b7, type: 3}
