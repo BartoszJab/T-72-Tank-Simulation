@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TankController : MonoBehaviour
+public class TankTemporaryController : MonoBehaviour
 {
     [SerializeField] private GameObject _camerasHandler;
     private CameraHandlerScript cameraHandlerScript;

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class TankTrackController : MonoBehaviour
+public class TankController : MonoBehaviour
 {
     private Rigidbody rb;
     private bool isHandBrake;
@@ -8,11 +8,6 @@ public class TankTrackController : MonoBehaviour
     public Transform tankCenter;
     public float caterpillarOffset;
     public float wheelRadius = 1f; // radius of wheels
-    public float suspensionOffset = 0.05f; // offset of the wheel from its starting position when not touching surface
-
-    // public float trackTextureSpeed = 2.5f;
-    // protected float leftTrackTextureOffset = 0.0f;
-    // protected float rightTrackTextureOffset = 0.0f;
 
     // left side track and wheels
     [Header("LEFT TANK SIDE")]
@@ -37,7 +32,7 @@ public class TankTrackController : MonoBehaviour
     float verticalMovement = 0f;
     float horizontalMovement = 0f;
 
-    public float maxSpeed;
+    public float maxSpeed = 85.0f;
     public float standRotateTorque = 600.0f;
     public float maxBrake = 2000.0f;
 
