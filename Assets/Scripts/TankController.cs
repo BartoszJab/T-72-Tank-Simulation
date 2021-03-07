@@ -163,7 +163,7 @@ public class TankController : MonoBehaviour
                 wheelCollider.motorTorque = horizontal * forwardTorque * turnSpeed;
             }
 
-            if (wheelCollider.rpm > maxSpeed) wheelCollider.motorTorque = 0;
+            if (wheelCollider.rpm > maxSpeed || wheelCollider.rpm < -maxSpeed) wheelCollider.motorTorque = 0;
 
             if (isHandBrake) wheelCollider.brakeTorque = maxBrake;
         }
