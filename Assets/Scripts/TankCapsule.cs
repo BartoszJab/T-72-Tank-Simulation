@@ -1,8 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class TankTemporaryController : MonoBehaviour
+public class TankCapsule : MonoBehaviour
 {
     [SerializeField] private GameObject _camerasHandler;
     private CameraHandlerScript cameraHandlerScript;
@@ -17,20 +15,13 @@ public class TankTemporaryController : MonoBehaviour
     public float maxXAngle = 20f;
     public float minXAngle = 0f;
 
-    [Header("Tank attributes")]
-    public float power = 5.0f;
-    private Rigidbody rb;
-
     void Start()
     {
         cameraHandlerScript = _camerasHandler.GetComponent<CameraHandlerScript>();
-        rb = GetComponent<Rigidbody>();
     }
 
     void Update()
     {
-
-        Move();
 
         if (!cameraHandlerScript.isRotateMode) {
             RotateCapsule();
@@ -48,15 +39,8 @@ public class TankTemporaryController : MonoBehaviour
     }
 
     private void RotateCapsule() {
-        // capsule.transform.Rotate(0f, (Input.GetAxis("Mouse X") * capsuleRotationSpeed * Time.deltaTime), 0f);
-        capsule.transform.Rotate(0f, (Input.GetAxis("Horizontal") * capsuleRotationSpeed * Time.deltaTime), 0f);
-    }
-
-    // temporary template movement function
-    private void Move() {
-        float moveForward = Input.GetAxis("Vertical") * power;
-
-        rb.AddForce(Vector3.forward * moveForward);
+        capsule.transform.Rotate(0f, (Input.GetAxis("Mouse X") * capsuleRotationSpeed * Time.deltaTime), 0f);
+        // capsule.transform.Rotate(0f, (Input.GetAxis("Horizontal") * capsuleRotationSpeed * Time.deltaTime), 0f);
     }
 
     private void RotateRifle(float xAngleToRotate) {
