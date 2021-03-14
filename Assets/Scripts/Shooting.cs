@@ -7,36 +7,41 @@ public class Shooting : MonoBehaviour
     public Transform bulletSpawner;
     public Rigidbody projectilePrefab;
     public float shootingPower = 100_000f;
+    public float reloadTime = 4.0f;
 
-    private bool isShooting = false;
-
-    void Start()
-    {
-
-    }
-
+    private bool isReloading = false;
+    private bool isShootButtonPressed = false;
 
     void Update()
     {
+
         if (Input.GetMouseButtonDown(0)) {
-            Debug.Log("mouse btn pressed");
-            isShooting = true;
+            isShootButtonPressed = true;
         }
 
     }
 
     private void FixedUpdate() {
+        if (isReloading) return;
         Shoot();
     }
 
     private void Shoot() {
-        if (isShooting) {
+        if (isShootButtonPressed) {
             Vector3 position = bulletSpawner.position;
             Rigidbody projectileRb = Instantiate(projectilePrefab, position, bulletSpawner.rotation) as Rigidbody;
             projectileRb.AddRelativeForce(new Vector3(0, 0, shootingPower));
-            
-            isShooting = false;
+
+            StartCoroutine(Reload());
+            isShootButtonPressed = false;
         }
+    }
+
+    IEnumerator Reload() {
+        isReloading = true;
+        yield return new WaitForSeconds(reloadTime);
+
+        isReloading = false;
     }
 
 
