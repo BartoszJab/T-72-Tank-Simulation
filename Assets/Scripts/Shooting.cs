@@ -29,9 +29,20 @@ public class Shooting : MonoBehaviour
         if (canShoot) {
             StartCoroutine(Reload());
 
-            Vector3 position = bulletSpawner.position;
-            Rigidbody projectileRb = Instantiate(projectilePrefab, position, bulletSpawner.rotation) as Rigidbody;
-            projectileRb.AddRelativeForce(new Vector3(0, 0, shootingPower));
+            Vector3 spawnerPosition = bulletSpawner.position;
+            
+            // get the pre-instantiated projectile and set it up
+            GameObject projectile = ProjectilePooler.SharedInstance.GetPooledObject();
+            if (projectile != null) {
+                projectile.transform.position = spawnerPosition;
+                projectile.transform.rotation = bulletSpawner.rotation;
+                projectile.SetActive(true);
+            }
+            projectile.GetComponent<Rigidbody>().AddRelativeForce(new Vector3(0, 0, shootingPower));
+            
+            // TODO: Compare the performence between new and old way of projectile spawning
+            // Rigidbody projectileRb = Instantiate(projectilePrefab, spawnerPosition, bulletSpawner.rotation) as Rigidbody;
+            // projectileRb.AddRelativeForce(new Vector3(0, 0, shootingPower));
 
             canShoot = false;
         }
