@@ -30,9 +30,9 @@ public class TankCapsule : MonoBehaviour
         if (Input.GetKey(KeyCode.E)) {
             RotateRifle(maxXAngle);
         } else if (Input.GetKey(KeyCode.Q)) {
-            if (rifle.transform.localRotation.x < minXAngle) {
+            //if (rifle.transform.localRotation.x < minXAngle) {
                 RotateRifle(minXAngle);
-            }
+            //}
             
         }
 
@@ -40,7 +40,6 @@ public class TankCapsule : MonoBehaviour
 
     private void RotateCapsule() {
         capsule.transform.Rotate(0f, (Input.GetAxis("Mouse X") * capsuleRotationSpeed * Time.deltaTime), 0f);
-        // capsule.transform.Rotate(0f, (Input.GetAxis("Horizontal") * capsuleRotationSpeed * Time.deltaTime), 0f);
     }
 
     private void RotateRifle(float xAngleToRotate) {
