@@ -14,7 +14,10 @@ public class TankCapsule : MonoBehaviour
     public float minXAngle = 0f;
     public float damping = 1f;
 
+    [Header("Crosshair")]
     public Image crosshairImage;
+    public float crosshairDistance = 20f;
+
     private Camera cam;
 
     void Start()
@@ -30,7 +33,7 @@ public class TankCapsule : MonoBehaviour
             RotateCapsule();
 
             // set position of a crosshair that indicates what the rifle is aiming at
-            crosshairImage.transform.position = cam.WorldToScreenPoint(rifle.transform.position + rifle.transform.forward * 50);
+            crosshairImage.transform.position = cam.WorldToScreenPoint(rifle.transform.position + rifle.transform.forward * crosshairDistance);
         } else {
             crosshairImage.enabled = false;
         }
@@ -38,10 +41,7 @@ public class TankCapsule : MonoBehaviour
         if (Input.GetKey(KeyCode.E)) {
             RotateRifle(maxXAngle);
         } else if (Input.GetKey(KeyCode.Q)) {
-            //if (rifle.transform.localRotation.x < minXAngle) {
             RotateRifle(minXAngle);
-            //}
-            
         }
 
         

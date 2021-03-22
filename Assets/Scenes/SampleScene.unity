@@ -153,95 +153,6 @@ Transform:
   m_Father: {fileID: 543450653537971112}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &120826953
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 120826955}
-  - component: {fileID: 120826954}
-  - component: {fileID: 120826956}
-  m_Layer: 0
-  m_Name: RotateModeCamera
-  m_TagString: MainCamera
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!20 &120826954
-Camera:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 120826953}
-  m_Enabled: 1
-  serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.21960786, g: 0.21960786, b: 0.21960786, a: 0}
-  m_projectionMatrixMode: 1
-  m_GateFitMode: 2
-  m_FOVAxisMode: 0
-  m_SensorSize: {x: 36, y: 24}
-  m_LensShift: {x: 0, y: 0}
-  m_FocalLength: 50
-  m_NormalizedViewPortRect:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
-  near clip plane: 0.3
-  far clip plane: 1000
-  field of view: 60
-  orthographic: 0
-  orthographic size: 5
-  m_Depth: -1
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RenderingPath: -1
-  m_TargetTexture: {fileID: 0}
-  m_TargetDisplay: 0
-  m_TargetEye: 3
-  m_HDR: 1
-  m_AllowMSAA: 1
-  m_AllowDynamicResolution: 0
-  m_ForceIntoRT: 0
-  m_OcclusionCulling: 1
-  m_StereoConvergence: 10
-  m_StereoSeparation: 0.022
---- !u!4 &120826955
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 120826953}
-  m_LocalRotation: {x: 0.18077667, y: -0, z: -0, w: 0.9835242}
-  m_LocalPosition: {x: 0.2144238, y: 6.8299994, z: -15.580002}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 2014842596}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 20.83, y: 0, z: 0}
---- !u!114 &120826956
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 120826953}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9bfe490a2d3bdc64991cc80cc8e0b5fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tankTransform: {fileID: 2014842596}
-  rotateSpeed: 45
 --- !u!1 &132011336
 GameObject:
   m_ObjectHideFlags: 0
@@ -691,7 +602,7 @@ Transform:
   - {fileID: 543450653095434353}
   - {fileID: 1777795416}
   m_Father: {fileID: 2014842596}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &963194225
 GameObject:
@@ -770,13 +681,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.18077667, y: -0, z: -0, w: 0.9835242}
-  m_LocalPosition: {x: 0.5644238, y: 10.269999, z: -59.980003}
+  m_LocalRotation: {x: 0.110114895, y: -0, z: -0, w: 0.9939189}
+  m_LocalPosition: {x: 0.5644238, y: 11.05, z: -62.04}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 20.83, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 12.644, y: 0, z: 0}
 --- !u!114 &963194229
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -792,7 +703,7 @@ MonoBehaviour:
   tankTransform: {fileID: 2014842596}
   minAngleY: -45
   maxAngleY: 0
-  distance: 17
+  distance: 20
   mouseSensitivity: 2
 --- !u!114 &1012674928
 MonoBehaviour:
@@ -806,15 +717,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e942621bf2c8c1147942ce93d69bffe8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _camerasHandler: {fileID: 1868130704}
   capsule: {fileID: 1041537637}
-  capsuleRotationSpeed: 45
   rifle: {fileID: 919132149350002962}
   rifleRotationSpeed: 1.5
-  maxXAngle: -10
-  minXAngle: 0
+  maxXAngle: -8
+  minXAngle: 3
   damping: 1
-  crosshair: {fileID: 1293912636}
+  crosshairImage: {fileID: 1293912637}
+  crosshairDistance: 500
 --- !u!1 &1041537637
 GameObject:
   m_ObjectHideFlags: 0
@@ -874,7 +784,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2014842596}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1234485639
 GameObject:
@@ -1003,7 +913,7 @@ RectTransform:
   m_GameObject: {fileID: 1293912635}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 5, y: 5, z: 1}
   m_Children: []
   m_Father: {fileID: 1234485643}
   m_RootOrder: 0
@@ -1033,7 +943,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: 43b48f28ad262684aa87b89d5ad43af8, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1166,7 +1076,7 @@ Transform:
   - {fileID: 543450651674090121}
   - {fileID: 1339051963}
   m_Father: {fileID: 2014842596}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1777795415
 GameObject:
@@ -1262,9 +1172,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 102480b5ff595d648baff3b032f2f523, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainCamera: {fileID: 963194227}
-  rotateModeCamera: {fileID: 120826954}
-  isRotateMode: 0
 --- !u!4 &1868130706
 Transform:
   m_ObjectHideFlags: 0
@@ -1367,7 +1274,7 @@ MonoBehaviour:
   maxSpeed: 85
   standRotateTorque: 600
   maxBrake: 2000
-  forwardTorque: 500
+  forwardTorque: 1000
   rotateInMotionBrake: 50
   turnSpeed: 5
   standRotationSpeed: 15
@@ -1385,7 +1292,6 @@ Transform:
   - {fileID: 543450651875877526}
   - {fileID: 307366534}
   - {fileID: 1041537638}
-  - {fileID: 120826955}
   - {fileID: 860881218}
   - {fileID: 1509004157}
   - {fileID: 1074679436}
@@ -1423,7 +1329,7 @@ MonoBehaviour:
   bulletSpawner: {fileID: 56602693}
   projectilePrefab: {fileID: -2545338830068490201, guid: 5d2276f6a000c3f4bbcb206c1a8d5698,
     type: 3}
-  shootingPower: 5000
+  shootingPower: 20000
   reloadTime: 4
 --- !u!4 &92097553714512712
 Transform:
