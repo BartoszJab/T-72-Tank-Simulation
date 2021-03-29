@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Shooting : MonoBehaviour
 {
+    public AudioSource shootingAudioSource;
+
     public Transform bulletSpawner;
     public Rigidbody projectilePrefab;
     public float shootingPower = 100_000f;
@@ -28,6 +30,8 @@ public class Shooting : MonoBehaviour
     private void Shoot() {
         if (canShoot) {
             StartCoroutine(Reload());
+
+            shootingAudioSource.Play();
 
             Vector3 spawnerPosition = bulletSpawner.position;
             
