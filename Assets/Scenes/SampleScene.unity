@@ -1299,6 +1299,7 @@ MonoBehaviour:
   tankCenter: {fileID: 1074679436}
   caterpillarOffset: 0.11
   wheelRadius: 1
+  tankMoveAudio: {fileID: 2014842599}
   leftTrack: {fileID: 919132148550943435}
   leftWheelColliders:
   - {fileID: 7111186865423446852}
@@ -1404,6 +1405,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82f6f1a3841d1b647b61d6a02d2cbfdf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shootingAudioSource: {fileID: 2014842600}
   bulletSpawner: {fileID: 56602693}
   projectilePrefab: {fileID: -2545338830068490201, guid: 5d2276f6a000c3f4bbcb206c1a8d5698,
     type: 3}
@@ -1517,8 +1519,8 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 785735a7a6b7f9e40a77c16a651eda89, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
-  m_Pitch: 1
+  m_Volume: 0.75
+  m_Pitch: 0.75
   Loop: 0
   Mute: 0
   Spatialize: 0
@@ -1561,7 +1563,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 0.45
       inSlope: 0
       outSlope: 0
       tangentMode: 0
