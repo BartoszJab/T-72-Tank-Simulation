@@ -9,6 +9,8 @@ public class TankController : MonoBehaviour
     public float caterpillarOffset;
     public float wheelRadius = 1f; // radius of wheels
 
+    public AudioSource tankMoveAudio;
+
     // left side track and wheels
     [Header("LEFT TANK SIDE")]
     public GameObject leftTrack;
@@ -42,7 +44,10 @@ public class TankController : MonoBehaviour
     public float standRotationSpeed = 15.0f;
 
 
-    
+    private float topSpeed = 33;
+    private float currentSpeed = 0;
+    private float pitch = 1;
+
     private void Awake() {
         leftTrackWheelData = new WheelInfo[leftTrackWheels.Length];
         rightTrackWheelData = new WheelInfo[rightTrackWheels.Length];
@@ -70,6 +75,8 @@ public class TankController : MonoBehaviour
         if (Input.GetKey(KeyCode.Space)) {
             isHandBrake = true;
         }
+
+        SetDrivingAudio();
     }
 
     private void FixedUpdate() {
@@ -169,6 +176,19 @@ public class TankController : MonoBehaviour
         }
 
         wheelCollider.sidewaysFriction = fricitionCurve;
+    }
+
+    private void SetDrivingAudio() {
+        // change tank-idle audio pitch to simulate engine sound when driving
+        currentSpeed = rb.velocity.magnitude * 3.6f;
+        if (currentSpeed < topSpeed) {
+            pitch = currentSpeed / topSpeed;
+            tankMoveAudio.pitch = pitch + 1;
+
+            if (tankMoveAudio.pitch > 1.75f) {
+                tankMoveAudio.pitch = 1.75f;
+            }
+        }
     }
 
 }
