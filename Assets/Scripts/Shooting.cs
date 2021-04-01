@@ -11,6 +11,8 @@ public class Shooting : MonoBehaviour
     public float shootingPower = 100_000f;
     public float reloadTime = 4.0f;
 
+    public ParticleSystem shootingSmokeParticle;
+
     private bool isReloading = false;
     private bool canShoot = false;
 
@@ -30,6 +32,10 @@ public class Shooting : MonoBehaviour
     private void Shoot() {
         if (canShoot) {
             StartCoroutine(Reload());
+
+            ParticleSystem.EmitParams emitOverride = new ParticleSystem.EmitParams();
+            emitOverride.startLifetime = reloadTime;
+            shootingSmokeParticle.Emit(emitOverride, 500);
 
             shootingAudioSource.Play();
 
