@@ -10,6 +10,7 @@ public class TankController : MonoBehaviour
     public float wheelRadius = 1f; // radius of wheels
 
     public AudioSource tankMoveAudio;
+    public ParticleSystem drivingSmoke;
 
     // left side track and wheels
     [Header("LEFT TANK SIDE")]
@@ -74,6 +75,12 @@ public class TankController : MonoBehaviour
         isHandBrake = false;
         if (Input.GetKey(KeyCode.Space)) {
             isHandBrake = true;
+        }
+        
+        if (rb.velocity.magnitude > 1) {
+            drivingSmoke.Play();
+        } else {
+            drivingSmoke.Stop();
         }
 
         SetDrivingAudio();
