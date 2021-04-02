@@ -19,11 +19,11 @@ public class ProjectileHit : MonoBehaviour
         GameObject explosion = ObjectPooler.SharedInstance.GetPooledObject("ExplosionEffect");
         if (explosion != null) {
             ParticleSystem.EmitParams emitOverride = new ParticleSystem.EmitParams();
-            emitOverride.startLifetime = 4f;
+            emitOverride.startLifetime = 3f;
             explosion.transform.position = collision.GetContact(0).point;
             explosion.transform.rotation = Quaternion.identity;
             explosion.SetActive(true);
-            explosion.GetComponent<ParticleSystem>().Emit(emitOverride, 200);
+            explosion.GetComponent<ParticleSystem>().Emit(emitOverride, 50);
         }
 
         gameObject.SetActive(false);
