@@ -42,7 +42,7 @@ public class Shooting : MonoBehaviour
             Vector3 spawnerPosition = bulletSpawner.position;
             
             // get the pre-instantiated projectile and set it up
-            GameObject projectile = ProjectilePooler.SharedInstance.GetPooledObject();
+            GameObject projectile = ObjectPooler.SharedInstance.GetPooledObject("Projectile");
             if (projectile != null) {
                 projectile.transform.position = spawnerPosition;
                 projectile.transform.rotation = bulletSpawner.rotation;

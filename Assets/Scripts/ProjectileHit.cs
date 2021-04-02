@@ -13,12 +13,19 @@ public class ProjectileHit : MonoBehaviour
     }
 
     private void OnCollisionEnter(Collision collision) {
-        ParticleSystem.EmitParams emitOverride = new ParticleSystem.EmitParams();
-        emitOverride.startLifetime = 4f;
+        
         //shootingSmokeParticle.Emit(emitOverride, 500);
 
-        GameObject explosionParticle = Instantiate(explosion, collision.GetContact(0).point, Quaternion.identity);
-        explosion.GetComponent<ParticleSystem>().Emit(emitOverride, 200);
+        GameObject explosion = ObjectPooler.SharedInstance.GetPooledObject("ExplosionEffect");
+        if (explosion != null) {
+            ParticleSystem.EmitParams emitOverride = new ParticleSystem.EmitParams();
+            emitOverride.startLifetime = 4f;
+            explosion.transform.position = collision.GetContact(0).point;
+            explosion.transform.rotation = Quaternion.identity;
+            explosion.SetActive(true);
+            explosion.GetComponent<ParticleSystem>().Emit(emitOverride, 200);
+        }
+
         gameObject.SetActive(false);
     }
 }
