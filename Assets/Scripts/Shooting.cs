@@ -1,10 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Shooting : MonoBehaviour
 {
     public AudioSource shootingAudioSource;
+
+    public Image crosshair;
+    private float currentReloadTime = 0f;
 
     public Transform bulletSpawner;
     public Rigidbody projectilePrefab;
@@ -13,16 +17,20 @@ public class Shooting : MonoBehaviour
 
     public ParticleSystem shootingSmokeParticle;
 
+    
     private bool isReloading = false;
     private bool canShoot = false;
 
     void Update()
     {
-
+        if (isReloading) {
+            currentReloadTime += Time.deltaTime;
+            crosshair.fillAmount = currentReloadTime / reloadTime;
+        }
+        
         if (Input.GetMouseButtonDown(0) && !isReloading) {
             canShoot = true;
         }
-        Debug.Log("isreloading: " + isReloading);
     }
 
     private void FixedUpdate() {
@@ -59,6 +67,7 @@ public class Shooting : MonoBehaviour
     }
 
     IEnumerator Reload() {
+        currentReloadTime = 0f;
         isReloading = true;
         yield return new WaitForSeconds(reloadTime);
         isReloading = false;
