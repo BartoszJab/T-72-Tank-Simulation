@@ -2528,10 +2528,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd39b21a40cafbd498cd9aa82913510d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemsToPool:
+  - objectToPool: {fileID: 3875002022409777808, guid: 5d2276f6a000c3f4bbcb206c1a8d5698,
+      type: 3}
+    amountToPool: 5
+    shouldExpand: 0
+  - objectToPool: {fileID: 1425927556414584379, guid: 3086da511d1004945ace5a57a0b23ca2,
+      type: 3}
+    amountToPool: 3
+    shouldExpand: 0
   pooledObjects: []
-  projectileToPool: {fileID: 3875002022409777808, guid: 5d2276f6a000c3f4bbcb206c1a8d5698,
-    type: 3}
-  amountToPool: 5
 --- !u!1 &1509004156
 GameObject:
   m_ObjectHideFlags: 0
