@@ -67,10 +67,12 @@ public class Shooting : MonoBehaviour
     }
 
     IEnumerator Reload() {
+        crosshair.color = Color.red;
         currentReloadTime = 0f;
         isReloading = true;
         yield return new WaitForSeconds(reloadTime);
         isReloading = false;
+        crosshair.color = Color.green;
     }
 
 
