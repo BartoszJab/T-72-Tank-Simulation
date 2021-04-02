@@ -2496,7 +2496,7 @@ GameObject:
   - component: {fileID: 1413727296}
   - component: {fileID: 1413727297}
   m_Layer: 0
-  m_Name: ProjectilePooler
+  m_Name: ObjectPooler
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2934,7 +2934,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2014842594}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 785735a7a6b7f9e40a77c16a651eda89, type: 3}
