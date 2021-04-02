@@ -14431,7 +14431,7 @@ GameObject:
   - component: {fileID: 1257924836879183729}
   - component: {fileID: 1227399654818016023}
   - component: {fileID: 1365755792854097219}
-  - component: {fileID: 5163552112195537618}
+  - component: {fileID: 5567608327307190519}
   m_Layer: 0
   m_Name: HitExplosionEffect
   m_TagString: ExplosionEffect
@@ -19148,7 +19148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cc3dac642084e341a02d2609c51b487, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!82 &5163552112195537618
+--- !u!82 &5567608327307190519
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -19160,7 +19160,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 6358768d20d94464b8981a37849546d8, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.59
+  m_Volume: 0.7
   m_Pitch: 0.7
   Loop: 0
   Mute: 0
@@ -19171,7 +19171,7 @@ AudioSource:
   MinDistance: 1
   MaxDistance: 500
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 1
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -19204,7 +19204,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
+      value: 0.53
       inSlope: 0
       outSlope: 0
       tangentMode: 0
