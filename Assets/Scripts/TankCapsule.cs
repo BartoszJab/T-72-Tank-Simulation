@@ -3,6 +3,7 @@ using UnityEngine.UI;
 
 public class TankCapsule : MonoBehaviour
 {
+    public GameObject body;
 
     [Header("Capsule attributes")]
     public GameObject capsule;
@@ -44,15 +45,13 @@ public class TankCapsule : MonoBehaviour
             RotateRifle(minXAngle);
         }
 
-        
-        
     }
 
     private void RotateCapsule() {
         Quaternion rot = cam.transform.rotation;
-        rot.x = 0f;
-        rot.z = 0f;
-        capsule.transform.rotation = Quaternion.Slerp(capsule.transform.rotation, rot, Time.deltaTime * damping);
+
+        capsule.transform.rotation = Quaternion.Slerp(capsule.transform.rotation, rot, Time.deltaTime * damping); ;
+        capsule.transform.localEulerAngles = new Vector3(0, capsule.transform.localEulerAngles.y, 0f);
     }
 
     private void RotateRifle(float xAngleToRotate) {
