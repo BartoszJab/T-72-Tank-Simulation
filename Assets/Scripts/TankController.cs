@@ -15,18 +15,24 @@ public class TankController : MonoBehaviour
     // left side track and wheels
     [Header("LEFT TANK SIDE")]
     public GameObject leftTrack;
+    private Renderer leftTrackRenderer;
+    public float leftTrackTextureSpeed;
     public WheelCollider[] leftWheelColliders;
     public Transform[] leftTrackUpperWheels;
     public Transform[] leftTrackWheels;
     public Transform[] leftTrackBones;
+    public Vector3 leftWheelPosOffset;
 
     // right side track and wheels
     [Header("RIGHT TANK SIDE")]
     public GameObject rightTrack;
+    private Renderer rightTrackRenderer;
+    public float rightTrackTextureSpeed;
     public WheelCollider[] rightWheelColliders;
     public Transform[] rightTrackUpperWheels;
     public Transform[] rightTrackWheels;
     public Transform[] rightTrackBones;
+    public Vector3 rightWheelPosOffset;
 
     protected WheelInfo[] leftTrackWheelData;
     protected WheelInfo[] rightTrackWheelData;
@@ -65,6 +71,11 @@ public class TankController : MonoBehaviour
     private void Start() {
         rb = GetComponent<Rigidbody>();
         rb.centerOfMass = tankCenter.localPosition;
+
+        leftTrackRenderer = leftTrack.GetComponent<Renderer>();
+        rightTrackRenderer = rightTrack.GetComponent<Renderer>();
+
+        SetTracksTextureSpeed(0, 0);
     }
 
     // get user input
@@ -94,7 +105,7 @@ public class TankController : MonoBehaviour
 
         // left wheels
         foreach (WheelInfo lwd in leftTrackWheelData) {  
-            SetWheelsAndBones(lwd.wheelTransform, lwd.boneTransform, lwd.wheelCollider);
+            SetWheelsAndBones(lwd.wheelTransform, lwd.boneTransform, lwd.wheelCollider, leftWheelPosOffset);
 
             // move left wheel colliders
             TankDrive(lwd.wheelCollider, vertical, horizontal);
@@ -105,19 +116,28 @@ public class TankController : MonoBehaviour
             leftTrackUpperWheels[i].rotation = GetColliderPositionAndRotation(leftTrackWheelData[0].wheelCollider).rotation;
         }
 
+        // move left track texture
+        leftTrackRenderer.material.SetTextureOffset("_MainTex", new Vector2(0, Time.time * leftTrackTextureSpeed));
+
         // right wheels
+        float rwdRpm = 0f;
         foreach (WheelInfo rwd in rightTrackWheelData) {
-            SetWheelsAndBones(rwd.wheelTransform, rwd.boneTransform, rwd.wheelCollider);
+            SetWheelsAndBones(rwd.wheelTransform, rwd.boneTransform, rwd.wheelCollider, rightWheelPosOffset);
 
             // move right wheel colliders
             TankDrive(rwd.wheelCollider, vertical, -horizontal);
         }
-
+        Debug.Log("Right side rpm: " + rwdRpm);
         // set rotation of upper right side wheels
         for (int i = 0; i < rightTrackUpperWheels.Length; i++) {
             rightTrackUpperWheels[i].rotation = GetColliderPositionAndRotation(rightTrackWheelData[0].wheelCollider).rotation;
         }
 
+        // move right track texture
+        rightTrackRenderer.material.SetTextureOffset("_MainTex", new Vector2(0, Time.time * rightTrackTextureSpeed));
+
+        //if (Mathf.Round(horizontal) == 0 && Mathf.Round(vertical) == 0)
+            
     }
 
     // set necessary data describing wheels
@@ -132,12 +152,14 @@ public class TankController : MonoBehaviour
     }
 
     // set position and rotation for wheels as well as position for caterpillar bones respectively to the terrain the tank stays on
-    private void SetWheelsAndBones(Transform wheel, Transform bone, WheelCollider collider) {
+    private void SetWheelsAndBones(Transform wheel, Transform bone, WheelCollider collider, Vector3 wheelPosOffset) {
         PositionRotation posRot = GetColliderPositionAndRotation(collider);
 
         wheel.position = posRot.position;
+        wheel.localPosition += wheelPosOffset;
         wheel.rotation = posRot.rotation;
 
+        Vector3 bonePosition = new Vector3(posRot.position.x, posRot.position.y, bone.position.z);
         bone.position = posRot.position + transform.up * caterpillarOffset; 
     }
 
@@ -154,11 +176,17 @@ public class TankController : MonoBehaviour
         // none movement keys are pressed
         if (vertical == 0 && horizontal == 0) {
             wheelCollider.brakeTorque = maxBrake;
-
+            SetTracksTextureSpeed(0f, 0f);
         // forward/backward movement key is not pressed and the tank is not moving forward/backward significantly
         } else if (vertical == 0f && Mathf.Abs(localVelocity.z) < 0.5f) {
             wheelCollider.brakeTorque = 0f;
             wheelCollider.motorTorque = horizontal * standRotateTorque * standRotationSpeed;
+
+            if (horizontal < 0) {
+                SetTracksTextureSpeed(0.3f, -0.3f);
+            } else if (horizontal > 0) {
+                SetTracksTextureSpeed(-0.3f, 0.3f);
+            }
 
             fricitionCurve.extremumSlip = 1.0f;
 
@@ -167,6 +195,11 @@ public class TankController : MonoBehaviour
             fricitionCurve.extremumSlip = 0.85f; // reduces 'drift' during the tank turn
             wheelCollider.brakeTorque = 0f; 
             wheelCollider.motorTorque = vertical * forwardTorque;
+
+            if (vertical < 0)
+                SetTracksTextureSpeed(0.5f, -0.5f);
+            else
+                SetTracksTextureSpeed(-0.5f, 0.5f);
 
             if (horizontal > 0) {
                 wheelCollider.motorTorque = horizontal * forwardTorque * turnSpeed;
@@ -180,9 +213,16 @@ public class TankController : MonoBehaviour
             if (wheelCollider.rpm > maxSpeed || wheelCollider.rpm < -maxSpeed) wheelCollider.brakeTorque = 1000;
 
             if (isHandBrake) wheelCollider.brakeTorque = maxBrake;
+
+
         }
 
         wheelCollider.sidewaysFriction = fricitionCurve;
+    }
+
+    private void SetTracksTextureSpeed(float leftTrackTextureSpeed, float rightTrackTextureSpeed) {
+        this.leftTrackTextureSpeed = leftTrackTextureSpeed;
+        this.rightTrackTextureSpeed = rightTrackTextureSpeed;
     }
 
     private void SetDrivingAudio() {
