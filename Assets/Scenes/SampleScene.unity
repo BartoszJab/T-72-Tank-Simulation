@@ -141,8 +141,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f604a5fa78b3adb43907039831202145, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  renderer: {fileID: 0}
-  speed: 0.5
 --- !u!4 &27161601 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9044806412961212599, guid: 55b85b6529c8cf94cb5fc0927cc7e94c,
@@ -455,7 +453,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 96f28856020018c489511ac919c3a63b,
         type: 3}
       propertyPath: m_Name
-      value: with-texture-possibly-left-cater
+      value: left-caterpillar
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 96f28856020018c489511ac919c3a63b, type: 3}
@@ -1483,7 +1481,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 55b85b6529c8cf94cb5fc0927cc7e94c,
         type: 3}
       propertyPath: m_Name
-      value: with-texture-possibly
+      value: right-caterpillar
       objectReference: {fileID: 0}
     - target: {fileID: 3283089552785667888, guid: 55b85b6529c8cf94cb5fc0927cc7e94c,
         type: 3}
@@ -1595,7 +1593,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: 0.110114895, y: -0, z: -0, w: 0.9939189}
-  m_LocalPosition: {x: 233.01442, y: 11.05, z: -1186.94}
+  m_LocalPosition: {x: 370.60443, y: 16.39, z: -1174.2999}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1630,6 +1628,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e942621bf2c8c1147942ce93d69bffe8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  body: {fileID: 919132147622901804}
   capsule: {fileID: 1041537637}
   rifle: {fileID: 919132149350002962}
   rifleRotationSpeed: 1.5
@@ -1705,7 +1704,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1074679435}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.06, y: -1.45, z: 0.48000336}
+  m_LocalPosition: {x: 0.03, y: -1.45, z: 0.48}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2014842596}
@@ -2445,8 +2444,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f604a5fa78b3adb43907039831202145, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  renderer: {fileID: 0}
-  speed: -0.5
 --- !u!1 &1234485639
 GameObject:
   m_ObjectHideFlags: 0
@@ -2991,7 +2988,8 @@ MonoBehaviour:
   wheelRadius: 1
   tankMoveAudio: {fileID: 2014842599}
   drivingSmoke: {fileID: 564395026}
-  leftTrack: {fileID: 0}
+  leftTrack: {fileID: 1196080451}
+  leftTrackTextureSpeed: 0
   leftWheelColliders:
   - {fileID: 7111186865423446852}
   - {fileID: 7111186867138192977}
@@ -3017,7 +3015,8 @@ MonoBehaviour:
   - {fileID: 433525917}
   - {fileID: 2022302866}
   leftWheelPosOffset: {x: -0.35, y: 0.1, z: 0}
-  rightTrack: {fileID: 0}
+  rightTrack: {fileID: 9499318}
+  rightTrackTextureSpeed: 0
   rightWheelColliders:
   - {fileID: 7111186866141143571}
   - {fileID: 7111186865665072923}
@@ -3043,10 +3042,10 @@ MonoBehaviour:
   - {fileID: 27161601}
   - {fileID: 1334278239}
   rightWheelPosOffset: {x: -0.06, y: 0.1, z: 0}
-  maxSpeed: 85
-  standRotateTorque: 600
-  maxBrake: 2000
-  forwardTorque: 1000
+  maxSpeed: 200
+  standRotateTorque: 1000
+  maxBrake: 3000
+  forwardTorque: 1600
   rotateInMotionBrake: 50
   turnSpeed: 5
   standRotationSpeed: 15
@@ -3058,7 +3057,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2014842594}
   m_LocalRotation: {x: -0, y: -0.64622885, z: -0, w: -0.7631437}
-  m_LocalPosition: {x: 232.8, y: 3.42, z: -1169.3}
+  m_LocalPosition: {x: 370.39, y: 8.76, z: -1156.66}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 543450651875877526}
@@ -5165,10 +5164,10 @@ WheelCollider:
     m_AsymptoteValue: 0.5
     m_Stiffness: 1
   m_SidewaysFriction:
-    m_ExtremumSlip: 0.5
-    m_ExtremumValue: 5
-    m_AsymptoteSlip: 10
-    m_AsymptoteValue: 15
+    m_ExtremumSlip: 1
+    m_ExtremumValue: 10
+    m_AsymptoteSlip: 2
+    m_AsymptoteValue: 2
     m_Stiffness: 1
   m_Enabled: 1
 --- !u!146 &7111186865619972772
@@ -5195,10 +5194,10 @@ WheelCollider:
     m_AsymptoteValue: 0.5
     m_Stiffness: 1
   m_SidewaysFriction:
-    m_ExtremumSlip: 0.5
-    m_ExtremumValue: 5
-    m_AsymptoteSlip: 10
-    m_AsymptoteValue: 15
+    m_ExtremumSlip: 1
+    m_ExtremumValue: 10
+    m_AsymptoteSlip: 2
+    m_AsymptoteValue: 2
     m_Stiffness: 1
   m_Enabled: 1
 --- !u!146 &7111186865665072923
@@ -5225,10 +5224,10 @@ WheelCollider:
     m_AsymptoteValue: 0.5
     m_Stiffness: 1
   m_SidewaysFriction:
-    m_ExtremumSlip: 0.5
-    m_ExtremumValue: 5
-    m_AsymptoteSlip: 10
-    m_AsymptoteValue: 15
+    m_ExtremumSlip: 1
+    m_ExtremumValue: 10
+    m_AsymptoteSlip: 2
+    m_AsymptoteValue: 2
     m_Stiffness: 1
   m_Enabled: 1
 --- !u!146 &7111186866022588182
@@ -5255,10 +5254,10 @@ WheelCollider:
     m_AsymptoteValue: 0.5
     m_Stiffness: 1
   m_SidewaysFriction:
-    m_ExtremumSlip: 0.5
-    m_ExtremumValue: 5
-    m_AsymptoteSlip: 10
-    m_AsymptoteValue: 15
+    m_ExtremumSlip: 1
+    m_ExtremumValue: 10
+    m_AsymptoteSlip: 2
+    m_AsymptoteValue: 2
     m_Stiffness: 1
   m_Enabled: 1
 --- !u!146 &7111186866121982899
@@ -5285,10 +5284,10 @@ WheelCollider:
     m_AsymptoteValue: 0.5
     m_Stiffness: 1
   m_SidewaysFriction:
-    m_ExtremumSlip: 0.5
-    m_ExtremumValue: 5
-    m_AsymptoteSlip: 10
-    m_AsymptoteValue: 15
+    m_ExtremumSlip: 1
+    m_ExtremumValue: 10
+    m_AsymptoteSlip: 2
+    m_AsymptoteValue: 2
     m_Stiffness: 1
   m_Enabled: 1
 --- !u!146 &7111186866141143571
@@ -5315,10 +5314,10 @@ WheelCollider:
     m_AsymptoteValue: 0.5
     m_Stiffness: 1
   m_SidewaysFriction:
-    m_ExtremumSlip: 0.5
-    m_ExtremumValue: 5
-    m_AsymptoteSlip: 10
-    m_AsymptoteValue: 15
+    m_ExtremumSlip: 1
+    m_ExtremumValue: 10
+    m_AsymptoteSlip: 2
+    m_AsymptoteValue: 2
     m_Stiffness: 1
   m_Enabled: 1
 --- !u!146 &7111186866228880918
@@ -5345,10 +5344,10 @@ WheelCollider:
     m_AsymptoteValue: 0.5
     m_Stiffness: 1
   m_SidewaysFriction:
-    m_ExtremumSlip: 0.5
-    m_ExtremumValue: 5
-    m_AsymptoteSlip: 10
-    m_AsymptoteValue: 15
+    m_ExtremumSlip: 1
+    m_ExtremumValue: 10
+    m_AsymptoteSlip: 2
+    m_AsymptoteValue: 2
     m_Stiffness: 1
   m_Enabled: 1
 --- !u!146 &7111186866475503152
@@ -5375,10 +5374,10 @@ WheelCollider:
     m_AsymptoteValue: 0.5
     m_Stiffness: 1
   m_SidewaysFriction:
-    m_ExtremumSlip: 0.5
-    m_ExtremumValue: 5
-    m_AsymptoteSlip: 10
-    m_AsymptoteValue: 15
+    m_ExtremumSlip: 1
+    m_ExtremumValue: 10
+    m_AsymptoteSlip: 2
+    m_AsymptoteValue: 2
     m_Stiffness: 1
   m_Enabled: 1
 --- !u!146 &7111186866870744831
@@ -5405,10 +5404,10 @@ WheelCollider:
     m_AsymptoteValue: 0.5
     m_Stiffness: 1
   m_SidewaysFriction:
-    m_ExtremumSlip: 0.5
-    m_ExtremumValue: 5
-    m_AsymptoteSlip: 10
-    m_AsymptoteValue: 15
+    m_ExtremumSlip: 1
+    m_ExtremumValue: 10
+    m_AsymptoteSlip: 2
+    m_AsymptoteValue: 2
     m_Stiffness: 1
   m_Enabled: 1
 --- !u!146 &7111186866911493359
@@ -5435,10 +5434,10 @@ WheelCollider:
     m_AsymptoteValue: 0.5
     m_Stiffness: 1
   m_SidewaysFriction:
-    m_ExtremumSlip: 0.5
-    m_ExtremumValue: 5
-    m_AsymptoteSlip: 10
-    m_AsymptoteValue: 15
+    m_ExtremumSlip: 1
+    m_ExtremumValue: 10
+    m_AsymptoteSlip: 2
+    m_AsymptoteValue: 2
     m_Stiffness: 1
   m_Enabled: 1
 --- !u!146 &7111186867138192977
@@ -5465,10 +5464,10 @@ WheelCollider:
     m_AsymptoteValue: 0.5
     m_Stiffness: 1
   m_SidewaysFriction:
-    m_ExtremumSlip: 0.5
-    m_ExtremumValue: 5
-    m_AsymptoteSlip: 10
-    m_AsymptoteValue: 15
+    m_ExtremumSlip: 1
+    m_ExtremumValue: 10
+    m_AsymptoteSlip: 2
+    m_AsymptoteValue: 2
     m_Stiffness: 1
   m_Enabled: 1
 --- !u!146 &7111186867486923729
@@ -5495,9 +5494,9 @@ WheelCollider:
     m_AsymptoteValue: 0.5
     m_Stiffness: 1
   m_SidewaysFriction:
-    m_ExtremumSlip: 0.5
-    m_ExtremumValue: 5
-    m_AsymptoteSlip: 10
-    m_AsymptoteValue: 15
+    m_ExtremumSlip: 1
+    m_ExtremumValue: 10
+    m_AsymptoteSlip: 2
+    m_AsymptoteValue: 2
     m_Stiffness: 1
   m_Enabled: 1
