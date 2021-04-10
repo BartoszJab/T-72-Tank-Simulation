@@ -42,6 +42,7 @@ public class TankController : MonoBehaviour
     float horizontalMovement = 0f;
 
     public float maxSpeed = 85.0f;
+    public float maxStandRotationSpeed = 25f;
     public float standRotateTorque = 600.0f;
     public float maxBrake = 2000.0f;
 
@@ -172,15 +173,18 @@ public class TankController : MonoBehaviour
     private void TankDrive(WheelCollider wheelCollider, float vertical, float horizontal) {
         var localVelocity = transform.InverseTransformDirection(rb.velocity);
 
-        WheelFrictionCurve fricitionCurve = wheelCollider.sidewaysFriction;
+        WheelFrictionCurve sidewaysFricitionCurve = wheelCollider.sidewaysFriction;
         // none movement keys are pressed
         if (vertical == 0 && horizontal == 0) {
             wheelCollider.brakeTorque = maxBrake;
             SetTracksTextureSpeed(0f, 0f);
         // forward/backward movement key is not pressed and the tank is not moving forward/backward significantly
-        } else if (vertical == 0f && Mathf.Abs(localVelocity.z) < 0.3f) {
+        } else if (vertical == 0f) {
             wheelCollider.brakeTorque = 0f;
             wheelCollider.motorTorque = horizontal * standRotateTorque * standRotationSpeed;
+            if (Mathf.Abs(wheelCollider.rpm) > maxStandRotationSpeed) {
+                wheelCollider.motorTorque = 0f;
+            }
 
             if (horizontal < 0) {
                 SetTracksTextureSpeed(0.3f, -0.3f);
@@ -188,18 +192,20 @@ public class TankController : MonoBehaviour
                 SetTracksTextureSpeed(-0.3f, 0.3f);
             }
 
-            fricitionCurve.extremumSlip = 1.0f;
+            sidewaysFricitionCurve.extremumSlip = 1.0f;
 
         // either forward/backward movement key is pressed or forward/backward and left/right keys are pressed simultaneously
         } else {
-            fricitionCurve.extremumSlip = 0.75f; // reduces 'drift' during the tank turn
+            sidewaysFricitionCurve.extremumSlip = 0.75f; // reduces 'drift' during the tank turn
             wheelCollider.brakeTorque = 0f; 
             wheelCollider.motorTorque = vertical * forwardTorque;
+            
 
             if (vertical < 0)
                 SetTracksTextureSpeed(0.5f, -0.5f);
             else
                 SetTracksTextureSpeed(-0.5f, 0.5f);
+
 
             if (horizontal > 0) {
                 wheelCollider.motorTorque = horizontal * forwardTorque * turnSpeed;
@@ -209,15 +215,15 @@ public class TankController : MonoBehaviour
                 //wheelCollider.brakeTorque = rotateInMotionBrake;
                 wheelCollider.motorTorque = horizontal * forwardTorque * turnSpeed;
             }
-            Debug.Log(wheelCollider.rpm);
-            if (wheelCollider.rpm > maxSpeed || wheelCollider.rpm < -maxSpeed) { wheelCollider.brakeTorque = maxBrake;}
+
+            if (Mathf.Abs(wheelCollider.rpm) > maxSpeed) { wheelCollider.brakeTorque = maxBrake;}
 
             if (isHandBrake) wheelCollider.brakeTorque = maxBrake;
 
 
         }
 
-        wheelCollider.sidewaysFriction = fricitionCurve;
+        wheelCollider.sidewaysFriction = sidewaysFricitionCurve;
     }
 
     private void SetTracksTextureSpeed(float leftTrackTextureSpeed, float rightTrackTextureSpeed) {
