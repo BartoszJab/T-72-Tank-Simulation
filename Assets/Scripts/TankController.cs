@@ -52,7 +52,7 @@ public class TankController : MonoBehaviour
     public float standRotationSpeed = 15.0f;
 
 
-    private float topSpeed = 33;
+    private float topSpeed = 75;
     private float currentSpeed = 0;
     private float pitch = 1;
 
@@ -67,6 +67,7 @@ public class TankController : MonoBehaviour
         for (int i = 0; i < rightTrackWheelData.Length; i++) {
             rightTrackWheelData[i] = SetWheelsInfo(rightTrackWheels[i], rightTrackBones[i], rightWheelColliders[i]);
         }
+        
     }
 
     private void Start() {
