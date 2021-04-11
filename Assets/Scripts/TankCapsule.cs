@@ -7,13 +7,14 @@ public class TankCapsule : MonoBehaviour
 
     [Header("Capsule attributes")]
     public GameObject capsule;
+    public float damping = 1f;
 
     [Header("Rifle attributes")]
     public GameObject rifle;
     public float rifleRotationSpeed = 3f;
-    public float maxXAngle = 20f;
-    public float minXAngle = 0f;
-    public float damping = 1f;
+    public float xMinAngle = -8;
+    public float xMaxAngle = 3;
+    public float xOffset;
 
     [Header("Crosshair")]
     public Image crosshairImage;
@@ -35,28 +36,25 @@ public class TankCapsule : MonoBehaviour
 
             // set position of a crosshair that indicates what the rifle is aiming at
             crosshairImage.transform.position = cam.WorldToScreenPoint(rifle.transform.position + rifle.transform.forward * crosshairDistance);
+
         } else {
             crosshairImage.enabled = false;
         }
 
-        if (Input.GetKey(KeyCode.E)) {
-            RotateRifle(maxXAngle);
-        } else if (Input.GetKey(KeyCode.Q)) {
-            RotateRifle(minXAngle);
-        }
-
+        if (!CameraHandlerScript.isRotateMode)
+            RotateRifle();
     }
 
     private void RotateCapsule() {
         Quaternion rot = cam.transform.rotation;
 
         capsule.transform.rotation = Quaternion.Slerp(capsule.transform.rotation, rot, Time.deltaTime * damping); ;
-        capsule.transform.localEulerAngles = new Vector3(0, capsule.transform.localEulerAngles.y, 0f);
+        capsule.transform.localEulerAngles = new Vector3(0f, capsule.transform.localEulerAngles.y, 0f);
     }
 
-    private void RotateRifle(float xAngleToRotate) {
-        Quaternion rifleQuaternion = Quaternion.Euler(xAngleToRotate, 0f, 0f);
-        rifle.transform.localRotation = Quaternion.Lerp(rifle.transform.localRotation, rifleQuaternion, Time.deltaTime * rifleRotationSpeed);
+    
+    private void RotateRifle() {
+        rifle.transform.localEulerAngles = new Vector3(Mathf.Clamp(cam.transform.localEulerAngles.x + xOffset, xMinAngle, xMaxAngle), 0f, 0f);
     }
 
 }
