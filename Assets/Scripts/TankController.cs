@@ -180,7 +180,7 @@ public class TankController : MonoBehaviour
             wheelCollider.brakeTorque = maxBrake;
             SetTracksTextureSpeed(0f, 0f);
         // forward/backward movement key is not pressed and the tank is not moving forward/backward significantly
-        } else if (vertical == 0f) {
+        } else if (vertical == 0f && Mathf.Abs(localVelocity.z) < 0.5f) {
             wheelCollider.brakeTorque = 0f;
             wheelCollider.motorTorque = horizontal * standRotateTorque * standRotationSpeed;
             if (Mathf.Abs(wheelCollider.rpm) > maxStandRotationSpeed) {

@@ -3,7 +3,6 @@ using UnityEngine.UI;
 
 public class TankCapsule : MonoBehaviour
 {
-    public GameObject body;
 
     [Header("Capsule attributes")]
     public GameObject capsule;
