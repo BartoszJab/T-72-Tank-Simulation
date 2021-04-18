@@ -97,6 +97,11 @@ public class TankController : MonoBehaviour
         }
 
         SetDrivingAudio();
+
+        // move left track texture
+        leftTrackRenderer.material.SetTextureOffset("_MainTex", new Vector2(0, Time.time * leftTrackTextureSpeed * 10));
+        // move right track texture
+        rightTrackRenderer.material.SetTextureOffset("_MainTex", new Vector2(0, Time.time * rightTrackTextureSpeed * 10));
     }
 
     private void FixedUpdate() {
@@ -118,25 +123,18 @@ public class TankController : MonoBehaviour
             leftTrackUpperWheels[i].rotation = GetColliderPositionAndRotation(leftTrackWheelData[0].wheelCollider).rotation;
         }
 
-        // move left track texture
-        leftTrackRenderer.material.SetTextureOffset("_MainTex", new Vector2(0, Time.time * leftTrackTextureSpeed));
-
         // right wheels
-        float rwdRpm = 0f;
         foreach (WheelInfo rwd in rightTrackWheelData) {
             SetWheelsAndBones(rwd.wheelTransform, rwd.boneTransform, rwd.wheelCollider, rightWheelPosOffset);
 
             // move right wheel colliders
             TankDrive(rwd.wheelCollider, vertical, -horizontal);
         }
-        Debug.Log("Right side rpm: " + rwdRpm);
+
         // set rotation of upper right side wheels
         for (int i = 0; i < rightTrackUpperWheels.Length; i++) {
             rightTrackUpperWheels[i].rotation = GetColliderPositionAndRotation(rightTrackWheelData[0].wheelCollider).rotation;
         }
-
-        // move right track texture
-        rightTrackRenderer.material.SetTextureOffset("_MainTex", new Vector2(0, Time.time * rightTrackTextureSpeed));
 
         //if (Mathf.Round(horizontal) == 0 && Mathf.Round(vertical) == 0)
             
@@ -178,13 +176,17 @@ public class TankController : MonoBehaviour
         // none movement keys are pressed
         if (vertical == 0 && horizontal == 0) {
             wheelCollider.brakeTorque = maxBrake;
-            SetTracksTextureSpeed(0f, 0f);
+            if (Mathf.Abs(localVelocity.z) < 0.3f) {
+                SetTracksTextureSpeed(0f, 0f);
+            }
+            
         // forward/backward movement key is not pressed and the tank is not moving forward/backward significantly
-        } else if (vertical == 0f && Mathf.Abs(localVelocity.z) < 0.5f) {
+        } else if (vertical == 0f && Mathf.Abs(localVelocity.z) < 2f) {
             wheelCollider.brakeTorque = 0f;
             wheelCollider.motorTorque = horizontal * standRotateTorque * standRotationSpeed;
             if (Mathf.Abs(wheelCollider.rpm) > maxStandRotationSpeed) {
                 wheelCollider.motorTorque = 0f;
+                wheelCollider.brakeTorque = maxBrake;
             }
 
             if (horizontal < 0) {
@@ -200,12 +202,11 @@ public class TankController : MonoBehaviour
             sidewaysFricitionCurve.extremumSlip = 0.75f; // reduces 'drift' during the tank turn
             wheelCollider.brakeTorque = 0f; 
             wheelCollider.motorTorque = vertical * forwardTorque;
-            
 
             if (vertical < 0)
-                SetTracksTextureSpeed(0.5f, -0.5f);
-            else
                 SetTracksTextureSpeed(-0.5f, 0.5f);
+            else
+                SetTracksTextureSpeed(0.5f, -0.5f);
 
 
             if (horizontal > 0) {
