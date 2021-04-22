@@ -30,24 +30,18 @@ public class TankCapsule : MonoBehaviour
     {
 
         if (!CameraHandlerScript.isRotateMode) {
-            crosshairImage.enabled = true;
             RotateCapsule();
 
             // set position of a crosshair that indicates what the rifle is aiming at
             crosshairImage.transform.position = cam.WorldToScreenPoint(rifle.transform.position + rifle.transform.forward * crosshairDistance);
-
-        } else {
-            crosshairImage.enabled = false;
-        }
-
-        if (!CameraHandlerScript.isRotateMode)
             RotateRifle();
+        }     
     }
 
     private void RotateCapsule() {
         Quaternion rot = cam.transform.rotation;
 
-        capsule.transform.rotation = Quaternion.Slerp(capsule.transform.rotation, rot, Time.deltaTime * damping); ;
+        capsule.transform.rotation = Quaternion.Slerp(capsule.transform.rotation, rot, Time.deltaTime * damping);
         capsule.transform.localEulerAngles = new Vector3(0f, capsule.transform.localEulerAngles.y, 0f);
     }
 
