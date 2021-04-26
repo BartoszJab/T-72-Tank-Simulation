@@ -17,7 +17,9 @@ public class Shooting : MonoBehaviour
 
     public ParticleSystem shootingSmokeParticle;
 
-    
+    public Vector3 recoilForce;
+    public float distanceFromCenter = 5f;
+
     private bool isReloading = false;
     private bool canShoot = false;
 
@@ -57,13 +59,22 @@ public class Shooting : MonoBehaviour
                 projectile.SetActive(true);
             }
             projectile.GetComponent<Rigidbody>().AddRelativeForce(new Vector3(0, 0, shootingPower));
-            
+
             // TODO: Compare the performence between new and old way of projectile spawning
             // Rigidbody projectileRb = Instantiate(projectilePrefab, spawnerPosition, bulletSpawner.rotation) as Rigidbody;
             // projectileRb.AddRelativeForce(new Vector3(0, 0, shootingPower));
 
+            AddRecoil();
+
             canShoot = false;
         }
+    }
+
+    void AddRecoil() {
+        Vector3 rifleLookVector = bulletSpawner.transform.forward;
+        rifleLookVector *= distanceFromCenter;
+        rifleLookVector.y = 0f;
+        GetComponent<Rigidbody>().AddForceAtPosition(recoilForce, transform.position + rifleLookVector);
     }
 
     IEnumerator Reload() {
