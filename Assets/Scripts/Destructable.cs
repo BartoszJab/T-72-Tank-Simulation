@@ -10,6 +10,7 @@ public class Destructable : MonoBehaviour
         if (collision.collider.tag == "Projectile") {
             Instantiate(fracturedBunker, transform.position, transform.rotation);
             Destroy(gameObject);
+            LevelManager.bunkersCount -= 1;
         }
     }
 }
