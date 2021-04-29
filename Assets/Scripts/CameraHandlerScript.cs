@@ -20,10 +20,6 @@ public class CameraHandlerScript : MonoBehaviour
         mainCamera = Camera.main;
         aimCamera.enabled = false;
         aimLayoutImage.enabled = false;
-
-        // hide cursor
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
     }
 
     void Update()
