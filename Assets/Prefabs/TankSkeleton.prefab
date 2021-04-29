@@ -160,7 +160,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 1000
+  far clip plane: 3000
   field of view: 30
   orthographic: 0
   orthographic size: 5
@@ -442,6 +442,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   capsule: {fileID: 2824990654945390764}
+  capsuleImage: {fileID: 0}
   damping: 1
   rifle: {fileID: 3167450940838170170}
   rifleRotationSpeed: 0.5
