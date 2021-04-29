@@ -6,6 +6,7 @@ public class TankCapsule : MonoBehaviour
 
     [Header("Capsule attributes")]
     public GameObject capsule;
+    public Image capsuleImage;
     public float damping = 1f;
 
     [Header("Rifle attributes")]
@@ -43,6 +44,8 @@ public class TankCapsule : MonoBehaviour
 
         capsule.transform.rotation = Quaternion.Slerp(capsule.transform.rotation, rot, Time.deltaTime * damping);
         capsule.transform.localEulerAngles = new Vector3(0f, capsule.transform.localEulerAngles.y, 0f);
+
+        capsuleImage.transform.localEulerAngles = new Vector3(0f, 0f, -capsule.transform.localEulerAngles.y);
     }
 
     
