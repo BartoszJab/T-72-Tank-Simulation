@@ -83,7 +83,7 @@ public class Shooting : MonoBehaviour
         isReloading = true;
         yield return new WaitForSeconds(reloadTime);
         isReloading = false;
-        crosshair.color = Color.green;
+        crosshair.color = Color.black;
     }
 
 
