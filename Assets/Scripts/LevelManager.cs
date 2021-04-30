@@ -10,7 +10,7 @@ public class LevelManager : MonoBehaviour
 
     public GameObject EndGameCanvas;
     public TMP_Text completionText;
-    private static float completionTime = 0f;
+    private static float completionTime;
     private float timeToLoadMenu = 5f;
 
     void Awake()
@@ -18,6 +18,7 @@ public class LevelManager : MonoBehaviour
         bunkersCount = bunkersHolder.transform.childCount;
         objectiveText.text = "Buncers left to destroy: " + bunkersCount;
         EndGameCanvas.SetActive(false);
+        completionTime = 0f;
     }
 
     private void Update() {
