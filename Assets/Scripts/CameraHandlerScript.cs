@@ -4,11 +4,11 @@ using UnityEngine.UI;
 public class CameraHandlerScript : MonoBehaviour
 {
     private Camera mainCamera;
-    
+
     [HideInInspector]
-    public static bool isRotateMode = false;
-    public static bool isMainMode = true;
-    public static bool isAmingMode = false;
+    public static bool isRotateMode;
+    public static bool isMainMode;
+    public static bool isAmingMode;
 
     public Camera aimCamera;
     public Image crosshairImage;
@@ -20,6 +20,10 @@ public class CameraHandlerScript : MonoBehaviour
         mainCamera = Camera.main;
         aimCamera.enabled = false;
         aimLayoutImage.enabled = false;
+
+        isRotateMode = false;
+        isMainMode = true;
+        isAmingMode = false;
     }
 
     void Update()
