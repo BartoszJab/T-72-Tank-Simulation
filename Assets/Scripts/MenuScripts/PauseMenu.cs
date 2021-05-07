@@ -8,6 +8,7 @@ public class PauseMenu : MonoBehaviour
     public static bool isGamePaused = false;
     public GameObject pauseMenuPanel;
     private Camera cam;
+    AudioSource[] audioSources;
 
     private void Awake() {
 
@@ -16,6 +17,8 @@ public class PauseMenu : MonoBehaviour
         cam = Camera.main;
 
         ActivateCursor(false);
+
+        audioSources = FindObjectsOfType<AudioSource>();
     }
 
     void Update() {
@@ -39,6 +42,10 @@ public class PauseMenu : MonoBehaviour
         isGamePaused = false;
         cam.GetComponent<CameraMovement>().enabled = true;
         ActivateCursor(false);
+
+        foreach (AudioSource audio in audioSources) {
+            audio.Play();
+        }
     }
 
     private void Pause() {
@@ -47,6 +54,10 @@ public class PauseMenu : MonoBehaviour
         isGamePaused = true;
         cam.GetComponent<CameraMovement>().enabled = false;
         ActivateCursor(true);
+
+        foreach (AudioSource audio in audioSources) {
+            audio.Pause();
+        }
     }
 
     private void ActivateCursor(bool toActivate) {
