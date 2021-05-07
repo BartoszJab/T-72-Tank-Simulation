@@ -2359,7 +2359,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 1000
+  far clip plane: 3000
   field of view: 60
   orthographic: 0
   orthographic size: 5
@@ -2711,6 +2711,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1189432804 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1189432804, guid: d5924bd803367ae46aec8ce5a3c8715d,
+    type: 3}
+  m_PrefabInstance: {fileID: 4782334898055597202}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1235778026 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8383672290965979942, guid: 6e92216760add3f458cd6e3162e1d4fc,
@@ -3213,7 +3225,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1464634272
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5423,6 +5435,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2824990654975302585, guid: eaa36d7f4ab00734b99295bec1f326c1,
         type: 3}
+      propertyPath: capsuleImage
+      value: 
+      objectReference: {fileID: 1189432804}
+    - target: {fileID: 2824990654975302585, guid: eaa36d7f4ab00734b99295bec1f326c1,
+        type: 3}
       propertyPath: crosshairImage
       value: 
       objectReference: {fileID: 1293912637}
@@ -5503,7 +5520,7 @@ PrefabInstance:
     - target: {fileID: 4782334896823209237, guid: d5924bd803367ae46aec8ce5a3c8715d,
         type: 3}
       propertyPath: m_Name
-      value: AimAndTargetCanvas
+      value: MainUI
       objectReference: {fileID: 0}
     - target: {fileID: 4782334896823209241, guid: d5924bd803367ae46aec8ce5a3c8715d,
         type: 3}
@@ -5619,6 +5636,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6874924265563069462, guid: 74b7859ad326e81489fa2c2fe9a0507e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6874924265650921360, guid: 74b7859ad326e81489fa2c2fe9a0507e,
         type: 3}
       propertyPath: m_Name

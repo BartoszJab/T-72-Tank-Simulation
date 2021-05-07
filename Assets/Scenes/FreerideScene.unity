@@ -17,7 +17,7 @@ RenderSettings:
   m_Fog: 1
   m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_FogMode: 3
-  m_FogDensity: 0.01
+  m_FogDensity: 0.004
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
   m_AmbientSkyColor: {r: 0.007376954, g: 0.009433985, b: 0.0069864886, a: 1}
@@ -27,7 +27,7 @@ RenderSettings:
   m_AmbientMode: 3
   m_SubtractiveShadowColor: {r: 0.43347278, g: 0.44696125, b: 0.4811321, a: 1}
   m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
-  m_HaloStrength: 0.5
+  m_HaloStrength: 0.302
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
   m_HaloTexture: {fileID: 0}
@@ -381,6 +381,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &813201716 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1189432804, guid: d5924bd803367ae46aec8ce5a3c8715d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1132197353}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1117242195
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -472,7 +484,7 @@ PrefabInstance:
     - target: {fileID: 4782334896823209237, guid: d5924bd803367ae46aec8ce5a3c8715d,
         type: 3}
       propertyPath: m_Name
-      value: AimAndTargetCanvas
+      value: MainUI
       objectReference: {fileID: 0}
     - target: {fileID: 4782334896823209241, guid: d5924bd803367ae46aec8ce5a3c8715d,
         type: 3}
@@ -597,6 +609,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: AvailableAreaHandler
+      objectReference: {fileID: 0}
+    - target: {fileID: 6874924265650921360, guid: 74b7859ad326e81489fa2c2fe9a0507e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6874924265650921363, guid: 74b7859ad326e81489fa2c2fe9a0507e,
         type: 3}
@@ -775,6 +792,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2824990654975302585, guid: eaa36d7f4ab00734b99295bec1f326c1,
+        type: 3}
+      propertyPath: capsuleImage
+      value: 
+      objectReference: {fileID: 813201716}
     - target: {fileID: 2824990654975302585, guid: eaa36d7f4ab00734b99295bec1f326c1,
         type: 3}
       propertyPath: crosshairImage
